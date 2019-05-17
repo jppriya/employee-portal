@@ -1,0 +1,17 @@
+<div *ngIf="showSuccessMessage">
+  <div class="alert alert-danger p-3 semibold-txt" role="alert">
+    <p class="mb-2">
+      <i aria-hidden="true" ></i> File Uploaded Succesfully!
+    </p>
+  </div>
+</div>
+
+<div class="container">
+  <form [formGroup]="edi">
+    <h4 class="text-center pt-4">Drag and Drop file here or click the "Add File" button below.</h4>
+    
+    <kendo-upload [saveUrl]="uploadSaveUrl"  [multiple]="false" [restrictions]="uploadRestrictions" formControlName="files" [removeUrl]="uploadRemoveUrl">
+    </kendo-upload>
+  </form>
+</div>
+<button (click)="uploadFiles()">Upload</button>

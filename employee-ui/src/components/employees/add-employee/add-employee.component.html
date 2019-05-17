@@ -1,0 +1,42 @@
+<div class="eco-heading">
+  <h1> Employee Here! </h1>
+</div>
+<div class="success-msg" *ngIf=!!successMessage>
+  {{successMessage}}
+</div>
+<form [formGroup]="employeeForm">
+  <div class="form-container">
+    <div class="form-input">
+      <label>Employee Id</label>
+      <input type="text" class="form-control" formControlName="employeeId" placeholder="Employee Id" />
+    </div>
+    <div class="form-input">
+      <label>First Name</label>
+      <input type="text" class="form-control" formControlName="firstName" placeholder="First Name" />
+    </div>
+    <div class="form-input">
+      <label>Last Name</label>
+      <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name" />
+    </div>
+    <div class="form-input">
+      <label>Gender</label>
+      <input type="text" class="form-control" formControlName="gender" placeholder="Gender" />
+    </div>
+    <div class="form-input">
+      <label>Date Of Birth</label>
+      <input type="text" class="form-control" formControlName="dob" placeholder="Date of Birth" />
+    </div>
+  </div>
+</form>
+
+<div align="center" class="mrg-top15">
+  <span style="padding-left:10px" *ngIf="!isAdd">
+    <button align="center" class="btn-primary" (click)="updateEmployee()">Update </button>
+  </span>
+  <span style="padding-left:10px" *ngIf="isAdd">
+    <button class="btn-primary" align="center" (click)="addEmployee()">Add</button>
+  </span>
+  <span style="padding-left:10px">
+    <button class="btn-secondary mrg-btm15" align="center" (click)="manageEmployee()">Manage Employee</button>
+  </span>
+</div>

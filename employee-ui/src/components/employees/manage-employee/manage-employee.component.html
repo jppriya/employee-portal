@@ -1,0 +1,46 @@
+<div class="eco-heading">
+  <div>
+    <h1>EMPLOYEE DETAILS</h1>
+  </div>
+  <div>
+    <button class="btn-primary" (click)="addEmployee()">Add Employee </button>
+  </div>
+
+  <div class="mrg-rt15">
+    <button class="btn-primary" (click)="upload()">Upload Employee </button>
+  </div>
+</div>
+<div class="success-msg" *ngIf=!!successMessage>
+  {{successMessage}}
+</div>
+
+<table class="table">
+  <tr>
+    <th>Employee Code</th>
+    <th>Employee First Name</th>
+    <th>Employee Last Name</th>
+    <th>Gender</th>
+    <th>Date Of Birth</th>
+
+  </tr>
+  <tr *ngFor="let employee of employees">
+    <td>
+      <a class="link" (click)="editEmployeeDetails(employee)">{{employee.employeeId}}
+
+      </a>
+    </td>
+    <td>
+      {{employee.firstName}}
+    </td>
+    <td>
+      {{employee.lastName}}
+    </td>
+    <td>
+      {{employee.gender}}
+    </td>
+    <td>
+      {{getDOB(employee)}}
+    </td>
+
+  </tr>
+</table>

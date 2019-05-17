@@ -14,11 +14,20 @@ public class EmployeeTransformer implements Transformer {
 
 	@Override
 	public List<EmployeeDTO> transform(List<Employee> employee) {
-		if(CollectionUtils.isEmpty(employee)){
+		if (CollectionUtils.isEmpty(employee)) {
 			return null;
 		}
 		List<EmployeeDTO> employeeDTOs = employee.stream().map(emp -> transform(emp)).collect(Collectors.toList());
 		return employeeDTOs;
+	}
+
+	@Override
+	public List<Employee> transformTOEmployee(List<EmployeeDTO> employeeDTO) {
+		if (CollectionUtils.isEmpty(employeeDTO)) {
+			return null;
+		}
+		List<Employee> employee = employeeDTO.stream().map(emp -> transform(emp)).collect(Collectors.toList());
+		return employee;
 	}
 
 	@Override
@@ -47,6 +56,22 @@ public class EmployeeTransformer implements Transformer {
 		employee.setLastName(employeeDTO.getLastName());
 		employee.setGender(employeeDTO.getGender());
 		return employee;
+	}
+
+	@Override
+	public Employee transform(EmployeeDTO source, Employee destination) {
+		if (destination == null) {
+			destination = new Employee();
+		}
+		if (source == null) {
+			return destination;
+		}
+		destination.setEmployeeId(source.getEmployeeId());
+		destination.setFirstName(source.getFirstName());
+		destination.setLastName(source.getLastName());
+		destination.setGender(source.getGender());
+		destination.setDob(source.getDob());
+		return destination;
 	}
 
 }
